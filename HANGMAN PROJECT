@@ -1,0 +1,89 @@
+import random
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''','''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''']
+list = ["aniruddh", "shailendra", "himanshu"]
+random_word = random.choice(list)
+
+lives = 6
+
+display = []
+
+for letter in range(len(random_word)):
+    display += "_"
+print(display)
+
+end_of_game = False
+
+while not end_of_game :
+    guess = input("Guess the letter :- ").lower()
+
+    for position in range(len(random_word)):
+        letter = random_word[position]
+        #print(f"currentposition : {position}\n Current letter: {letter}\n guessed letter :{guess}")
+        if letter == guess :
+            display[position] = letter
+
+
+
+    if guess not in random_word :
+      lives -= 1
+      if lives == 0:
+        end_of_game = True
+        print("YOU LOOSE")
+
+
+
+    print(display)
+    if "_" not in display :
+        end_of_game = True
+        print("Your win")
+
+    print(stages[lives])
